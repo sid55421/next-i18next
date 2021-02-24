@@ -13,6 +13,8 @@ type AppProps = {
   pageProps: SSRConfig
 }
 
+export let globalI18n = null
+
 export const appWithTranslation = <P extends Record<string, unknown>>(
   WrappedComponent: React.ComponentType | React.ElementType,
   configOverride: UserConfig = null,
@@ -45,6 +47,8 @@ export const appWithTranslation = <P extends Record<string, unknown>>(
         resources: initialI18nStore,
       }))
     }
+
+    globalI18n = i18n
 
     return (
       <I18nextProvider
